@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+@import './styles/tokens.css';
+
+/*
+ * Tailwind 유틸리티는 tokens.css 의 CSS 변수만 참조해요.
+ * 기본 팔레트를 비워서(--color-*: initial) 토큰 밖의 색이 섞이지 않게 해요.
+ */
+@theme inline {
+  --color-*: initial;
+
+  --color-primary: var(--rc-primary);
+  --color-primary-strong: var(--rc-primary-strong);
+  --color-primary-soft: var(--rc-primary-soft);
+  --color-secondary: var(--rc-secondary);
+  --color-secondary-soft: var(--rc-secondary-soft);
+  --color-accent: var(--rc-accent);
+
+  --color-bg: var(--rc-bg);
+  --color-surface: var(--rc-surface);
+  --color-surface-muted: var(--rc-surface-muted);
+  --color-border: var(--rc-border);
+  --color-border-strong: var(--rc-border-strong);
+
+  --color-ink: var(--rc-text);
+  --color-ink-muted: var(--rc-text-muted);
+  --color-ink-subtle: var(--rc-text-subtle);
+  --color-on-primary: var(--rc-on-primary);
+
+  --color-urgent: var(--rc-urgent);
+  --color-urgent-soft: var(--rc-urgent-soft);
+  --color-important: var(--rc-important);
+  --color-important-soft: var(--rc-important-soft);
+  --color-normal: var(--rc-normal);
+  --color-normal-soft: var(--rc-normal-soft);
+  --color-up: var(--rc-up);
+  --color-down: var(--rc-down);
+
+  --color-chart-1: var(--rc-chart-1);
+  --color-chart-2: var(--rc-chart-2);
+  --color-chart-3: var(--rc-chart-3);
+  --color-chart-4: var(--rc-chart-4);
+  --color-chart-5: var(--rc-chart-5);
+  --color-chart-soft: var(--rc-chart-soft);
+  --color-chart-compare: var(--rc-chart-compare);
+  --color-chart-grid: var(--rc-chart-grid);
+
+  --radius-card: var(--rc-radius-card);
+  --radius-control: var(--rc-radius-control);
+  --shadow-card: var(--rc-shadow-card);
+  --shadow-overlay: var(--rc-shadow-overlay);
+
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--rc-primary);
+    outline-offset: 2px;
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

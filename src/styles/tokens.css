@@ -1,0 +1,71 @@
+/*
+ * 린클 디자인 토큰 — 색·모양 값은 이 파일 한 곳에서만 관리해요.
+ * 공식 브랜드 컬러가 확정되면 아래 값만 바꾸면 전체 테마가 바뀌어요.
+ * [확인필요] primary / secondary / accent 는 임시값이에요.
+ */
+:root {
+  /* 브랜드 */
+  --rc-primary: #2f8f5b; /* 린클 그린 (임시) */
+  --rc-primary-strong: #24734a;
+  --rc-primary-soft: #e8f4ed;
+  --rc-secondary: #e9dfcc; /* 베이지 (임시) */
+  --rc-secondary-soft: #f7f2e9;
+  --rc-accent: #b8bec4; /* 실버 (임시) */
+
+  /* 배경·면 */
+  --rc-bg: #f4f6f8;
+  --rc-surface: #ffffff;
+  --rc-surface-muted: #f8fafb;
+  --rc-border: #e6e9ed;
+  --rc-border-strong: #d5dae0;
+
+  /* 텍스트 */
+  --rc-text: #18202a;
+  --rc-text-muted: #5b6672;
+  --rc-text-subtle: #8a949e;
+  --rc-on-primary: #ffffff;
+
+  /* 상태 */
+  --rc-urgent: #e5484d;
+  --rc-urgent-soft: #fdeced;
+  --rc-important: #ea8a2b;
+  --rc-important-soft: #fdf1e4;
+  --rc-normal: #3a7bdb;
+  --rc-normal-soft: #eaf1fc;
+  --rc-up: #1f9d55;
+  --rc-down: #e5484d;
+
+  /* 차트 — 범주색 5개는 순서가 색각이상 대비 안전장치예요. 바꾸면 dataviz 검증기를 다시 돌려요. */
+  --rc-chart-1: var(--rc-primary); /* 국내 / 단일 계열 */
+  --rc-chart-2: #2a78d6; /* 북미 */
+  --rc-chart-3: #eb6834; /* 일본 */
+  --rc-chart-4: #6250d6; /* EU */
+  --rc-chart-5: #e87ba4; /* 기타 */
+  --rc-chart-soft: #94c9a9; /* 단일 계열의 가상·진행 중 값 */
+  --rc-chart-compare: var(--rc-accent); /* 비교 대상(전년 등) */
+  --rc-chart-grid: #eef0f3;
+
+  /* 판매 채널 3색 (네이버·쿠팡·아마존) — 세 색 모든 쌍 검증 통과 */
+  --rc-channel-1: #1baf7a;
+  --rc-channel-2: #2a78d6;
+  --rc-channel-3: #eb6834;
+
+  /* 양극(긍정↔부정) — 두 극 + 회색 중립 */
+  --rc-polar-pos: #2a78d6;
+  --rc-polar-mid: #c3c8ce;
+  --rc-polar-neg: #e34948;
+
+  /* 지도 단계색 (연→진, 한 색상) — ordinal 검증 통과 */
+  --rc-seq-1: #86c4a0;
+  --rc-seq-2: #5cab7f;
+  --rc-seq-3: #3d9265;
+  --rc-seq-4: #2a774f;
+  --rc-seq-5: #1a5a3a;
+  --rc-map-empty: #e7eaee;
+
+  /* 모양 */
+  --rc-radius-card: 16px;
+  --rc-radius-control: 10px;
+  --rc-shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 2px 6px rgb(16 24 40 / 0.04);
+  --rc-shadow-overlay: 0 12px 32px rgb(16 24 40 / 0.16);
+}
