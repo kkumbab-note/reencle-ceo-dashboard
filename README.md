@@ -3,6 +3,8 @@
 > **Concept Prototype** — "우리는 세계 1위를 향해 지금 어디쯤 와 있고, 오늘 무엇에 집중해야 하는가?"에 답하는 CEO용 대시보드 웹 프로토타입이에요.
 > 백엔드·로그인 없이 정적 데이터로 동작해요.
 
+**바로 보기**: https://kkumbab-note.github.io/reencle-ceo-dashboard/ (GitHub Pages, 공개 주소)
+
 | 데스크톱 (1440px) | 모바일 (390px) |
 |---|---|
 | ![메인 대시보드 1440px](docs/screenshots/dashboard-1440.png) | ![메인 대시보드 390px](docs/screenshots/dashboard-390.png) |
@@ -34,12 +36,27 @@ npm run dev
 | `npm run preview` | 빌드 결과물을 http://localhost:4173 에서 확인 |
 | `npm test` | 데이터 정합성 테스트 (월별 합계 = 연매출 등 30개) |
 | `npm run typecheck` | 타입 검사만 |
+| `npm run build:pages` | GitHub Pages용 빌드 (`/reencle-ceo-dashboard/` 하위 경로) |
+| `npm run deploy:pages` | GitHub Pages로 배포 (`gh-pages` 브랜치에 올림) |
 
 > 개발 PC의 메모리가 부족하면 Vite 개발 서버가 꺼질 수 있어요. 그럴 땐 `npm run build` 후 `npm run preview`로 확인하면 메모리를 덜 써요.
 
 ---
 
-## 배포 (Vercel)
+## 배포 — GitHub Pages (현재 사용 중)
+
+코드를 고친 뒤 아래 명령 한 줄이면 공개 주소가 갱신돼요(반영까지 1~2분).
+
+```bash
+npm run deploy:pages
+```
+
+- 빌드 결과물은 `gh-pages` 브랜치에 올라가요. 저장소 **Settings → Pages**에서 이 브랜치가 배포 대상으로 설정되어 있어요.
+- 하위 경로(`/reencle-ceo-dashboard/`)에서 동작하도록 빌드해요. 저장소 이름을 바꾸면 `package.json`의 `build:pages` 안의 `--base` 값도 같이 바꿔요.
+- `/sales` 같은 하위 주소로 바로 들어와도 앱이 뜨도록, 빌드할 때 `404.html`을 함께 만들어요([`scripts/prepare-pages.mjs`](scripts/prepare-pages.mjs)).
+- ⚠️ **공개 주소예요.** 링크를 아는 누구나 볼 수 있어요. 검색엔진 노출은 `noindex`로 막아 두었지만, 화면 숫자 대부분이 가상이라 외부 공유는 피하는 게 좋아요.
+
+## 배포 — Vercel (선택)
 
 정적 사이트라 서버 설정이 필요 없어요. [`vercel.json`](vercel.json)에 모든 경로를 `index.html`로 보내는 설정이 들어 있어요. 그래서 `/sales` 같은 하위 주소에서 새로고침해도 404가 나지 않아요.
 

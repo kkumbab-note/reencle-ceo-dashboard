@@ -83,6 +83,16 @@
 - **정리**: 쓰지 않는 `@types/topojson-client`를 뺐어요.
 - **실제 Vercel 배포**: 보류했어요 (결정 #8).
 
+## 2026-10-30 — GitHub Pages 공개 배포
+
+- **배포 방식**: 사용자 결정에 따라 공개 저장소 + GitHub Pages로 배포했어요. Vercel 무료 플랜은 약관상 회사 프로토타입이 상업 용도로 볼 여지가 있어 보류했어요.
+- **주소**: https://kkumbab-note.github.io/reencle-ceo-dashboard/ · 저장소 https://github.com/kkumbab-note/reencle-ceo-dashboard
+- **계정**: GitHub CLI에 저장된 이름(nandari76-dot)은 예전 이름이에요. 같은 계정(ID 253257812)의 현재 이름은 kkumbab-note예요.
+- **커밋 작성자**: 이메일이 공개되지 않도록 GitHub noreply 주소를 이 저장소에만 설정했어요.
+- **공개에서 뺀 것**: 원본 기획 프롬프트(`Reencle_dashboard_prompt_v1.md`), 로컬 도구 설정(`.claude/`).
+- **하위 경로 대응**: Vite `--base`와 라우터 `basename`(`import.meta.env.BASE_URL`)으로 맞췄어요. 루트 배포(Vercel·로컬)는 그대로 `/`예요.
+- **Actions 대신 gh-pages 브랜치**: 지금 로그인 토큰에 workflow 권한이 없어서, GitHub Actions 대신 `gh-pages` 패키지로 빌드 결과를 브랜치에 올려요.
+
 ## 설치된 주요 버전
 
 React 19.3 · react-router 8.5 · Vite 8.3 · TypeScript 7.0 · Tailwind CSS 4.3 · Recharts 3.10 · react-simple-maps 5.0 · lucide-react 1.64 · Pretendard 1.3.9(npm 번들) · Vitest 5.0
