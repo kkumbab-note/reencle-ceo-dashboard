@@ -3,37 +3,50 @@ import { NavLink } from 'react-router'
 import { Settings, X } from 'lucide-react'
 import { cx } from '../../lib/cx'
 import { Logo } from './Logo'
-import { NAV_ITEMS } from './navItems'
+import { NAV_GROUPS } from './navItems'
 
-const itemBase =
-  'flex h-11 w-full items-center gap-3 rounded-control px-3 text-[15px] font-medium transition-colors'
+const itemBase = 'flex w-full items-center gap-3 rounded-control text-[15px] font-medium transition-colors'
+
+// 아이콘만 보일 땐 조금 촘촘하게 — 메뉴 15개가 768px 높이에 들어가도록
+function itemLayout(collapsed: boolean) {
+  return collapsed ? 'h-9 justify-center' : 'h-10 px-3'
+}
 
 function SidebarNav({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: () => void }) {
   return (
-    <nav aria-label="주 메뉴" className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
-      {!collapsed && (
-        <p className="px-3 pb-2 text-[11px] font-semibold tracking-wide text-ink-subtle">메뉴</p>
-      )}
-      {NAV_ITEMS.map(({ path, label, icon: Icon }) => (
-        <NavLink
-          key={path}
-          to={path}
-          end={path === '/'}
-          onClick={onNavigate}
-          title={collapsed ? label : undefined}
-          className={({ isActive }) =>
-            cx(
-              itemBase,
-              collapsed && 'justify-center px-0',
-              isActive
-                ? 'bg-primary-soft font-semibold text-primary'
-                : 'text-ink-muted hover:bg-surface-muted hover:text-ink',
-            )
-          }
-        >
-          <Icon className="size-5 shrink-0" aria-hidden="true" />
-          {collapsed ? <span className="sr-only">{label}</span> : <span className="truncate">{label}</span>}
-        </NavLink>
+    <nav aria-label="주 메뉴" className="flex flex-1 flex-col overflow-y-auto px-3 py-3">
+      {NAV_GROUPS.map((group, groupIndex) => (
+        <div key={group.label} role="group" aria-label={group.label} className="flex flex-col gap-0.5">
+          {/* 펼친 상태는 그룹 제목, 아이콘만 보일 땐 구분선 */}
+          {collapsed ? (
+            groupIndex > 0 && <hr className="mx-2 my-1.5 border-border" />
+          ) : (
+            <p className={cx('px-3 pb-1.5 text-[11px] font-semibold tracking-wide text-ink-subtle', groupIndex > 0 ? 'pt-4' : 'pt-1')}>
+              {group.label}
+            </p>
+          )}
+          {group.items.map(({ path, label, icon: Icon }) => (
+            <NavLink
+              key={path}
+              to={path}
+              end={path === '/'}
+              onClick={onNavigate}
+              title={collapsed ? label : undefined}
+              className={({ isActive }) =>
+                cx(
+                  itemBase,
+                  itemLayout(collapsed),
+                  isActive
+                    ? 'bg-primary-soft font-semibold text-primary'
+                    : 'text-ink-muted hover:bg-surface-muted hover:text-ink',
+                )
+              }
+            >
+              <Icon className="size-5 shrink-0" aria-hidden="true" />
+              {collapsed ? <span className="sr-only">{label}</span> : <span className="truncate">{label}</span>}
+            </NavLink>
+          ))}
+        </div>
       ))}
     </nav>
   )
@@ -47,7 +60,7 @@ function SidebarFooter({ collapsed }: { collapsed: boolean }) {
         type="button"
         aria-disabled="true"
         title="설정 (준비 중)"
-        className={cx(itemBase, 'cursor-default text-ink-muted hover:bg-surface-muted', collapsed && 'justify-center px-0')}
+        className={cx(itemBase, itemLayout(collapsed), 'cursor-default text-ink-muted hover:bg-surface-muted')}
       >
         <Settings className="size-5 shrink-0" aria-hidden="true" />
         {collapsed ? <span className="sr-only">설정</span> : <span>설정</span>}

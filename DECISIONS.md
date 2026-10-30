@@ -93,6 +93,14 @@
 - **하위 경로 대응**: Vite `--base`와 라우터 `basename`(`import.meta.env.BASE_URL`)으로 맞췄어요. 루트 배포(Vercel·로컬)는 그대로 `/`예요.
 - **Actions 대신 gh-pages 브랜치**: 지금 로그인 토큰에 workflow 권한이 없어서, GitHub Actions 대신 `gh-pages` 패키지로 빌드 결과를 브랜치에 올려요.
 
+## 2026-10-30 — 경영 관리 메뉴 추가
+
+- **요청**: 사용자가 보낸 메뉴 이미지대로 조직관리 · 구성원관리 · 근태관리 · 급여관리 · 연차관리 · 평가관리 · 채용관리 · 교육관리 · 전자결재 · 보고서 10개를 추가했어요.
+- **배치**: 기존 KPI 메뉴 5개는 'KPI 대시보드' 그룹, 새 메뉴 10개는 '경영 관리' 그룹으로 나눴어요. 사이드바가 펼쳐지면 그룹 제목을, 아이콘만 보일 땐 구분선을 보여줘요.
+- **아이콘**: 이미지와 비슷한 lucide 선 아이콘을 썼어요 — Network · Users · Clock · Receipt · CalendarCheck · ChartLine · UserRound · BookOpen · SquarePen · ChartColumn.
+- **동작**: 아직 화면이 없어 `/manage/{이름}` 주소의 공통 '준비 중' 화면으로 이동해요. 눌렀을 때 아무 반응이 없는 메뉴를 만들지 않으려는 거예요.
+- **높이**: 메뉴가 15개로 늘어서 항목 높이를 40px로 줄였어요(아이콘만 보일 땐 36px). 1440×900, 1024×768에서 스크롤 없이 모두 보여요. 모바일 드로어는 마지막 메뉴를 보려면 살짝 스크롤해야 해요.
+
 ## 설치된 주요 버전
 
 React 19.3 · react-router 8.5 · Vite 8.3 · TypeScript 7.0 · Tailwind CSS 4.3 · Recharts 3.10 · react-simple-maps 5.0 · lucide-react 1.64 · Pretendard 1.3.9(npm 번들) · Vitest 5.0
