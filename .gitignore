@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+.vercel
+.DS_Store
+
+# 로컬 도구 설정
+.claude/
+
+# 원본 기획 프롬프트 — 공개 저장소에는 올리지 않아요
+Reencle_dashboard_prompt_v1.md
